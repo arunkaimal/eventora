@@ -2,6 +2,14 @@ import Image from "next/image";
 import React from "react";
 import eventora_logo from "@/public/eventora_logo.png";
 import Link from "next/link";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const Header = () => {
   return (
@@ -11,18 +19,25 @@ const Header = () => {
           {/* Logo */}
           <div className="relative w-25 h-20">
             <Link href={"/"} className="flex items-center">
-              <Image
-                src={eventora_logo}
-                fill
-                alt="Eventora Logo"
-                priority 
-              />
+              <Image src={eventora_logo} fill alt="Eventora Logo" priority />
             </Link>
           </div>
 
           {/* Search and location - Desktop only */}
 
           {/* Right side actions */}
+          <div className="flex items-center">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <Button variant="outline" size="sm" className="cursor-pointer">
+                  Sign In
+                </Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </div>
 
         {/* Mobile search and location - Below headers */}

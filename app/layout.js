@@ -1,6 +1,9 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import Header from "@/components/Header";
+import { ConvexClientProvider } from "./ConvexClientProvider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { shadesOfPurple } from "@clerk/themes";
 
 export const metadata = {
   title: "Eventora",
@@ -17,31 +20,39 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          {/* Header */}
+          <ClerkProvider
+            appearance={{
+              theme: shadesOfPurple ,
+            }}
+          >
+            <ConvexClientProvider>
+              {/* Header */}
 
-          <Header />
+              <Header />
 
-          {/* Header Ends Here */}
-          <main className="relative min-h-screen container mx-auto pt-40 md:pt-32">
-            {/* Glow */}
+              {/* Header Ends Here */}
+              <main className="relative min-h-screen container mx-auto pt-40 md:pt-32">
+                {/* Glow */}
 
-            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-              <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#A7FFF6]/40 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#B388FF]/40 rounded-full blur-3xl" />
-            </div>
+                <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+                  <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#A7FFF6]/40 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#B388FF]/40 rounded-full blur-3xl" />
+                </div>
 
-            {/* Glow ends here */}
+                {/* Glow ends here */}
 
-            <div className="relative z-10 min-h-[65vh]">{children}</div>
+                <div className="relative z-10 min-h-[65vh]">{children}</div>
 
-            {/* Footer */}
+                {/* Footer */}
 
-            <footer className="border-t border-gray-800/30 py-8 px-6 max-w-7xl mx-auto">
-              <div className="text-gray-700 text-sm">Eventora</div>
-            </footer>
+                <footer className="border-t border-gray-800/30 py-8 px-6 max-w-7xl mx-auto">
+                  <div className="text-gray-700 text-sm">Eventora</div>
+                </footer>
 
-            {/* Footer Ends Here */}
-          </main>
+                {/* Footer Ends Here */}
+              </main>
+            </ConvexClientProvider>
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>
