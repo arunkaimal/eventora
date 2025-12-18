@@ -27,6 +27,9 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="flex items-center">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
             <SignedOut>
               <SignInButton mode="modal">
                 <Button variant="outline" size="sm" className="cursor-pointer">
@@ -34,9 +37,6 @@ const Header = () => {
                 </Button>
               </SignInButton>
             </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
           </div>
         </div>
 
