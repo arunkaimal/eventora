@@ -10,6 +10,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { BarLoader } from "react-spinners";
 
 const Header = () => {
   return (
@@ -41,6 +42,11 @@ const Header = () => {
         </div>
 
         {/* Mobile search and location - Below headers */}
+
+        {/* Loader */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <BarLoader width={"100%"} />
+        </div>
       </nav>
 
       {/* Modals */}
